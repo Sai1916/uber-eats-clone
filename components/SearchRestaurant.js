@@ -8,7 +8,7 @@ export default function SearchRestaurant({ cityHandler }) {
   return (
     <View style={{ marginTop: 15, flexDirection: "row" }}>
       <GooglePlacesAutocomplete
-        query={{ key: "AIzaSyB9jnQ1MYuKcz6Pvrf7k5DT1Bo7JzaOX_k" }}
+        query={{ key: `${API_KEY}` }}
         onPress={(data, details = null) => {
           console.log(data.description);
           const city = data.description.split(",")[0];
