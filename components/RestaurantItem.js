@@ -32,19 +32,20 @@ export const localRestaurants = [
 export default function RestaurantItem({navigation, ...props}){
     
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{backgroundColor:"#c0ebe9"}}>
             {props.restaurantData.map((restaurant,index) => (
                 <TouchableOpacity 
                     key={index}
+                    activeOpacity={1}
                     style={{
                         width:"94%",
                         flexDirection:"column",
                         alignItems:"center",
                         justifyContent:"center",
                         marginVertical:10,
-                        marginHorizontal:10, 
+                        marginHorizontal:13, 
                         backgroundColor:"white",
-                        borderRadius:10
+                        borderRadius:10,
                     }}
                         onPress={() => navigation.navigate("RestaurantDetail",
                             {
@@ -57,15 +58,7 @@ export default function RestaurantItem({navigation, ...props}){
                             }
                         )}
                     >
-                    <Image 
-                        source={{uri: restaurant.image_url}}
-                        style={{
-                            width: "100%",
-                            height: 160,
-                            borderTopRightRadius:10,
-                            borderTopLeftRadius:10,
-                        }} 
-                    />  
+                    <RestaurantImage image={restaurant.image_url} />
                     <View style={{paddingHorizontal:20,paddingVertical:10,width:"100%",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
                         <View style={{flexDirection:"column"}}>
                             <Text style={{fontSize:20,fontFamily:"sans-serif"}}>{restaurant.name}</Text>
@@ -77,7 +70,20 @@ export default function RestaurantItem({navigation, ...props}){
                     </View>
                 </TouchableOpacity>
             ))}
-        </ScrollView>
+        </View>
     )
 }
 
+const RestaurantImage = (props) => (
+    <Image 
+        source={{
+            uri: props.image
+        }}
+        style={{
+            width: "100%",
+            height: 160,
+            borderTopRightRadius:10,
+            borderTopLeftRadius:10,
+        }} 
+    />  
+)

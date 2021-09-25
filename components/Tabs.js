@@ -1,14 +1,45 @@
 import React, { useState } from 'react'
 import { View,Text,TouchableOpacity } from 'react-native';
 
-function Tabs({navigation}) {
-  const [clicked,setClicked]=useState("Delivery")
-    return (
-      <View style={{flexDirection: "row",alignItems:"center",justifyContent:"center",backgroundColor:"white",width:"100%"}}>
-        <TouchableOpacity><Text style={{fontSize: 20,fontWeight:"900",backgroundColor:"black",color:"white",paddingVertical:10,paddingHorizontal:10,borderRadius:25}}>Delivery</Text></TouchableOpacity>
-        <TouchableOpacity><Text style={{fontSize: 20}}>Pickup</Text></TouchableOpacity>
-      </View>
-    );
-  }
+export default function Tabs(props){
+  return (
+    <View style={{ flexDirection: "row", alignSelf: "center",marginVertical:10}}>
+      <HeaderButton
+        text="Delivery"
+        btnColor="black"
+        textColor="white"
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
+      />
+      <HeaderButton
+        text="Pickup"
+        btnColor="white"
+        textColor="black"
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
+      />
+    </View>
+  );
+}
 
-  export default Tabs;
+const HeaderButton = (props) => (
+  <TouchableOpacity
+    style={{
+      backgroundColor: props.activeTab === props.text ? "black" : "white",
+      paddingVertical: 6,
+      paddingHorizontal: 16,
+      borderRadius: 30,
+    }}
+    onPress={() => props.setActiveTab(props.text)}
+  >
+    <Text
+      style={{
+        color: props.activeTab === props.text ? "white" : "black",
+        fontSize: 15,
+        fontWeight: "900",
+      }}
+    >
+      {props.text}
+    </Text>
+  </TouchableOpacity>
+);

@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
-import { View, Text } from 'react-native'
-import HomeScreen from '../screens/HomeScreen';
-import RestaurantDetail from '../screens/RestaurantDetail';
 import SettingsScreen from '../screens/SettingsScreen';
 import { HomeStack } from './Navigation';
 import { Feather,AntDesign,MaterialIcons } from 'react-native-vector-icons'
+import FavouritesScreen from '../screens/FavouritesScreen';
+import CartScreen from '../screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,14 +23,14 @@ const RootNavigation = () => {
         />
         <Tab.Screen 
           name="Favourites" 
-          component={SettingsScreen} 
+          component={FavouritesScreen} 
           options={{ 
             tabBarIcon : ({ color }) =><MaterialIcons name="favorite-border" size={26} color={color} />,
           }}
         />
         <Tab.Screen 
           name="Cart" 
-          component={SettingsScreen} 
+          component={CartScreen} 
           options={{ 
             tabBarIcon : ({ color }) =><AntDesign name="shoppingcart" size={26} color={color} />
             }}
