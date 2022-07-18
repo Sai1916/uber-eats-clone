@@ -18,6 +18,7 @@ const RootNavigation = () => {
           name="Home" 
           component={HomeStack} 
           options={{ 
+            headerShown: false,
             tabBarIcon : ({ color }) =><Feather name="home" size={26} color={color} />,
           }}
         />

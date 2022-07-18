@@ -39,8 +39,8 @@ export default function HomeScreen({navigation}){
         getRestaurantsFromYelp();
       }, [city,activeTab]);
 
-    return(
-        <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
+    return( 
+        <SafeAreaView style={{height: "100%",backgroundColor:"white"}}>
             <Tabs activeTab={activeTab} setActiveTab={setActiveTab} /> 
             <SearchRestaurant cityHandler={setCity} />
             <ScrollView showsVerticalScrollIndicator={false} >

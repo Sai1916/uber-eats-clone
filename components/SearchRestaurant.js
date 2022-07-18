@@ -1,20 +1,21 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-
+// import GeoLocation from '@react-native-community/geolocation';
+ 
 export default function SearchRestaurant({ cityHandler }) {
+
+   //const currentLoc = GeoLocation.getCurrentPosition(info => console.log(info));
+
   return (
-    <View style={{ marginTop: 15, flexDirection: "row" }}>
-      <GooglePlacesAutocomplete
-        query={{ key: `${API_KEY}` }}
-        onPress={(data, details = null) => {
-          console.log(data.description);
-          const city = data.description.split(",")[0];
-          cityHandler(city);
-        }}
+    <View style={{ marginVertical: 10, flexDirection: "row",margin: 5}}>  
+ 
+      {/* <GooglePlacesAutocomplete  
+        query={{key: "AIzaSyD6cp3G1PF9tsBJ-96W8ZRN69imHitMHxQ"}}
         placeholder="Search"
+        fetchDetails={true}
         styles={{
           textInput: {
             backgroundColor: "#eee",
@@ -28,6 +29,43 @@ export default function SearchRestaurant({ cityHandler }) {
             flexDirection: "row",
             alignItems: "center",
             marginRight: 10,
+          },
+        }} 
+      
+      /> */}
+
+       <GooglePlacesAutocomplete
+        query={{ 
+          key: "AIzaSyBtWARfZt_ehQX-ueUY-myZiWyZy4km4pk",   
+          language: "en",
+         }}
+        onPress={(data, details = null) => {
+          console.log(data.description);
+          const city = data.description.split(",")[0];
+          cityHandler(city);
+        }}
+        nearbyPlacesAPI="GooglePlacesSearch"
+        GooglePlacesSearchQuery={{
+          type: "restaurant",
+        }}
+        // currentLocation={true}
+        // currentLocationLabel='Current location'
+        debounce={400}
+        placeholder="Search Restaurant"
+        enablePoweredByContainer = {false}
+        styles={{
+          textInput: {
+            backgroundColor: "#eee",
+            borderRadius: 20,
+            fontWeight: "700",
+            marginTop: 7,
+          },
+          textInputContainer: {
+            backgroundColor: "#eee", 
+            borderRadius: 50,
+            flexDirection: "row",
+            alignItems: "center",
+           // marginRight: 10, 
           },
         }}
         renderLeftButton={() => (
@@ -54,7 +92,7 @@ export default function SearchRestaurant({ cityHandler }) {
             <Text>Search</Text>
           </View>
         )}
-      />
+      /> 
     </View>
   );
 }

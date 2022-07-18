@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, Image,ScrollView } from 'react-native'
-import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType'
 
 const listData = [
     {
